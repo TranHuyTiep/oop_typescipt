@@ -4,8 +4,10 @@ import * as logger  from 'morgan'
 import * as bodyParser from 'body-parser'
 
 import index from './controller/user/index'
+import api from     './controller/api/index'
 
 class App{
+    
     public express : express.Application;
 
     constructor(){
@@ -24,7 +26,8 @@ class App{
 
     private router():void{
         let router = express.Router()
-        this.express.use('/', index);
+        this.express.use('/user/', index);
+        this.express.use('/api/' , api)
     }
 }
 

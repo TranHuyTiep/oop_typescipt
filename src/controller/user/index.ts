@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction} from 'express';
-
+import * as model_user from "../../model/user/model"
 export class user {
 
 	router:Router;
@@ -10,7 +10,9 @@ export class user {
 	}
 
 	public Getuser(req:Request, res: Response){
-        res.render('user',{name:'Hello world'})
+		model_user.default.get_user('tiep',(erro,data)=>{
+			res.json({name:data})
+		})
     }
     
 	init(){

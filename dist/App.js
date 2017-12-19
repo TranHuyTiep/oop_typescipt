@@ -5,6 +5,7 @@ const express = require("express");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 const index_1 = require("./controller/user/index");
+const index_2 = require("./controller/api/index");
 class App {
     constructor() {
         this.express = express();
@@ -20,7 +21,8 @@ class App {
     }
     router() {
         let router = express.Router();
-        this.express.use('/', index_1.default);
+        this.express.use('/user/', index_1.default);
+        this.express.use('/api/', index_2.default);
     }
 }
 exports.default = new App().express;
